@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="../../../assets/css/bootstrap/bootstrap.min.css"
+    />
+    <style>
+      [data-type="2"] {
+        background-color: rgb(154, 175, 246);
+      }
+      [data-type="3"] {
+        background-color: rgb(232, 255, 232);
+      }
+      [data-type="4"] {
+        background-color: rgb(245, 190, 190);
+      }
+    </style>
+    <script
+      type="text/javascript"
+      src="../../../assets/js/configs/configs.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../../../assets/js/services/api.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../../../assets/js/common/common.js"
+    ></script>
+    <script type="text/javascript">
+      async function load() {
+        let serviceTypes = await getServiceTypes();
+        let status = await getStatus();
+        await getRequests(serviceTypes, status);
+      }
+
+      async function getRequests(serviceTypes, status) {
+        const url = configs.serviceRequestURL;
+        let res = await getData(url);
+        let data = await res.json();
+
+        let griData = "";
+        for (let item of data) {
+          griData += ` <tr data-type= "${item.active}" >
+                        <td>${item.id}</td>
+                         <td>${
+                           serviceTypes.find((d) => d.id == item.type).service
+                         }</td>
+                        <td>${item.name}</td>
+                        <td>${item.description}</td>
+                        <td>${item.startDate}</td>
+                        <td>${item.endDate}</td>
+                        <td>${
+                          status.find((d) => d.id == item.active).status
+                        }</td>
+                    </tr>`;
+        }
+        $("#viewRequest").setHtml(griData);
+      }
+
+      async function getServiceTypes() {
+        const url = "http://localhost:3000/service";
+        const res = await getData(url);
+        const serviceTypes = res.json();
+        return serviceTypes;
+      }
+
+      async function getStatus() {
+        const url = "http://localhost:3000/status";
+        const res = await getData(url);
+        const status = res.json();
+        return status;
+      }
+    </script>
+  </head>
+  <body onload="load()">
+    <table class="table table-boarded table-striped table-hover">
+      <thead class="table-primary">
+        <tr>
+          <th>ID</th>
+          <th>Service Type</th>
+          <th>Service Name</th>
+          <th>Description</th>
+          <th>Start Date</th>
+          <th>End Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="viewRequest"></tbody>
+    </table>
+  </body>
+</html>

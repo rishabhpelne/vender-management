@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="./assets/css/bootstrap/bootstrap.min.css">
+        <script type="text/javascript" src="./assets/js/configs/configs.js"></script>
+        <script type="text/javascript" src="./assets/js/storage/storage.js"></script>
+        <script type="text/javascript" src="./assets/js/common/common.js"></script>
+        <script type="text/javascript">
+            function load() {
+                let userData = getStorageValue("userDetails");
+                if(userData) {
+                    $("#container").src(configs.homeUrl);
+                } else {
+                    $("#container").src(configs.loginUrl);
+                }
+            }
+        </script>
+    </head>
+    <body onload="load()">
+        <div class="container">
+            <iframe src="" id="container" style="width: 100%; height: 99vh;"></iframe>
+        </div>
+    </body>
+</html>

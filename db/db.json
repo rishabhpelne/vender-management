@@ -1,0 +1,137 @@
+{
+  "roles": [
+    {
+      "id": "1",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "role": "Service Team"
+    },
+    {
+      "id": "3",
+      "role": "BU Team"
+    },
+    {
+      "id": "4",
+      "role": "Vendor"
+    }
+  ],
+  "status": [
+    {
+      "id": "1",
+      "status": "Draft"
+    },
+    {
+      "id": "2",
+      "status": "Pending"
+    },
+    {
+      "id": "3",
+      "status": "Approved"
+    },
+    {
+      "id": "4",
+      "status": "Rejected"
+    }
+  ],
+  "service": [
+    {
+      "id": "1",
+      "service": "Catering"
+    },
+    {
+      "id": "2",
+      "service": "IT Hardware"
+    },
+    {
+      "id": "3",
+      "service": "HR Consulting"
+    },
+    {
+      "id": "4",
+      "service": "Others"
+    }
+  ],
+  "userStatus": [
+    {
+      "id": "1",
+      "status": "Active"
+    },
+    {
+      "id": "2",
+      "status": "InActive"
+    }
+  ],
+  "vendors": [
+    {
+      "id": "1",
+      "businessName": "ABC Consulting",
+      "consultentName": "Rishabh",
+      "businessEmail": "rishabh@gmail.com",
+      "businessContact": 1892345739,
+      "address": "Nagpur",
+      "startDate": "1-Aug-2024",
+      "endDate": "24-Aug-2024",
+      "services": 1,
+      "role": 4,
+      "userName": "admin",
+      "password": "admin@123",
+      "userStatus": 1
+    }
+  ],
+  "serviceRequests": [
+    {
+      "id": "155e",
+      "type": "2",
+      "name": "TechFix IT Solutions",
+      "description": " Comprehensive IT support services, including network setup, hardware repair, and cybersecurity solutions for businesses.",
+      "startDate": "2024-08-05",
+      "endDate": "2024-08-30",
+      "active": "2"
+    },
+    {
+      "id": "3514",
+      "type": "4",
+      "name": "Sparkle Cleaners",
+      "description": "Reliable cleaning services for homes and offices, offering regular maintenance, deep cleaning, and specialized sanitation services.",
+      "startDate": "2024-08-14",
+      "endDate": "2025-04-14",
+      "active": "3"
+    },
+    {
+      "id": "fbd0",
+      "type": "1",
+      "name": "HealthyEats Meal Prep",
+      "description": "ustomized meal prep services offering healthy, nutritious meals tailored to individual dietary needs and preferences.",
+      "startDate": "2024-08-19",
+      "endDate": "2024-10-21",
+      "active": "4"
+    },
+    {
+      "id": "218b",
+      "type": "3",
+      "name": "TravelEase Agency",
+      "description": "Personalized travel planning services, including flight bookings, hotel reservations, and curated travel itineraries for both leisure and business trips.",
+      "startDate": "2024-06-10",
+      "endDate": "2025-09-29",
+      "active": "2"
+    }
+  ],
+  "users": [
+    {
+      "name": "admin",
+      "email": "admin@gmail.com",
+      "password": "1234",
+      "roleId": 1,
+      "id": "1"
+    },
+    {
+      "name": "update",
+      "email": "admin.support@gmail.com",
+      "password": "1234",
+      "roleId": "3",
+      "id": "bf2e"
+    }
+  ]
+}

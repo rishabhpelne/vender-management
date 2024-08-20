@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link
+      rel="stylesheet"
+      href="../../../assets/css/bootstrap/bootstrap.min.css"
+    />
+    <script
+      type="text/javascript"
+      src="../../../assets/js/form/form.js"
+    ></script>
+    <script
+      type="text/javascript"
+      src="../../../assets/js/services/api.js"
+    ></script>
+    <script type="text/javascript">
+
+      async function load() {
+        const res = await getData("http://localhost:3000/service");
+        const data = await res.json();
+        let options = " <option value=''>Select Service Types</option>";
+        for(let item of data) {
+            options = options  + `<option value="${item.id}">${item.service}</option>`
+        }
+        document.querySelector("#serviceType").innerHTML = options;
+      }
+
+      async function CreateServiceRequest(event) {
+        event.preventDefault();
+        const url = "http://localhost:3000/serviceRequests";
+        let data = form("#createRequest [name]");
+
+        const res = await saveData(url, data);
+        window.location.reload();
+      }
+    </script>
+  </head>
+  <body style="width: 98%" onload="load()">
+    <h2>Create Service Request</h2>
+    <form id="createRequest" onsubmit="CreateServiceRequest(event)">
+      <div class="form-group">
+        <label>Service Type</label>
+        <select class="form-control" name="type" id="serviceType">
+         
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Service Name</label>
+        <input type="text" class="form-control" name="name" />
+      </div>
+
+      <div class="form-group">
+        <label>Service Description</label>
+        <textarea class="form-control" name="description"></textarea>
+      </div>
+
+      <div class="row mt-3">
+        <div class="col-2">Service Start</div>
+        <div class="col-4">
+          <input type="date" class="form-control" name="startDate" />
+        </div>
+
+        <div class="col-2">Service End</div>
+        <div class="col-4">
+          <input type="date" class="form-control" name="endDate" />
+        </div>
+      </div>
+      <input type="hidden" name="active" value="2" />
+      <div class="mt-2">
+        <input type="submit" class="btn btn-primary" value="Send Request" />
+        <input type="reset" class="btn btn-secondary" value="Clear" />
+      </div>
+    </form>
+  </body>
+</html>
