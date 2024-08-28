@@ -5,6 +5,7 @@ import ServiceRequest from "./components/service-request/ServiceRequest";
 import { ServiceRequestItem } from "./components/service-request/service-request-item/service-request-item";
 import { NotFound } from "./components/not-found/not-found";
 import {Layout} from "./components/layout/layout"
+import { NoAccess } from "./components/no-access/no-access";
 
 export function AppRouter() {
     return (
@@ -26,6 +27,7 @@ export function AppRouter() {
                 </Layout>
             }  ></Route>
             <Route path="/dashboard" element={<Layout />}  ></Route>
+            <Route path="/no-access" element={<NoAccess />}  ></Route>
             <Route path="/" element={<Login />} ></Route>
             <Route path="*" element={<NotFound />} ></Route>
         </Routes>

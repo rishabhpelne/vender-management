@@ -60,14 +60,14 @@
       }
 
       async function getServiceTypes() {
-        const url = "http://localhost:3000/service";
+        const url = "http://localhost:4000/service";
         const res = await getData(url);
         const serviceTypes = res.json();
         return serviceTypes;
       }
 
       async function getStatus() {
-        const url = "http://localhost:3000/status";
+        const url = "http://localhost:4000/status";
         const res = await getData(url);
         const status = res.json();
         return status;

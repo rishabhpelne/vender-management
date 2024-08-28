@@ -2,7 +2,7 @@
   "roles": [
     {
       "id": "1",
-      "role": "admin"
+      "role": "Admin"
     },
     {
       "id": "2",
@@ -120,17 +120,21 @@
   ],
   "users": [
     {
-      "name": "admin",
+      "name": "Rishabh",
       "email": "admin@gmail.com",
       "password": "1234",
       "roleId": 1,
-      "id": "1"
+      "id": "1",
+      "requestedBy": 1,
+      "ApprovedBy": 1
     },
     {
-      "name": "update",
+      "name": "update1",
       "email": "admin.support@gmail.com",
       "password": "1234",
-      "roleId": "3",
+      "roleId": "4",
+      "requestedBy": 1,
+      "ApprovedBy": 1,
       "id": "bf2e"
     }
   ]

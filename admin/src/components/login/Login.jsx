@@ -3,10 +3,13 @@ import "./login.css";
 import { useRef } from "react";
 import { setStorage } from "../../services/storage.service";
 import { useForm } from "react-hook-form";
+import configs from "../../configs/configs";
+import store from "../../services/redux-service";
 
 const Login = () => {
   // const EmailRef = useRef();
   // const passwordRef = useRef();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -28,19 +31,23 @@ const Login = () => {
     );
 
     // localStorage.setItem("userDetails" , JSON.stringify(userData))
-    setStorage("userDetails", JSON.stringify(userData));
-
-    navigate("/home");
+    if(userData) {
+      setStorage("userDetails", userData);
+      const action = {type: "userDetails", data: userData};
+      store.dispatch(action)
+      navigate("/dashboard");
+    }
+    else {
+      alert("User email/password are incorrect")
+    }
   }
 
   async function getUser() {
-    const url = "http://localhost:4000/users/";
+    const url = configs.rootApiurl + configs.usersUrl
     const res = await fetch(url);
     const users = await res.json();
     return users;
   }
-
-  const navigate = useNavigate();
 
   function navigateToRegistration() {
     navigate("/registration");

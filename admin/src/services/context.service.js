@@ -1,25 +1,13 @@
+import axios from "axios"
+
 export function getData(url) {
-    return fetch(url);
+    return axios.get(url);
 }
 
 export function saveData(url , data) {
-    const options = {
-        method : "POST",
-        headers : {
-            "content-type" : "application/json"
-        },
-        body : JSON.stringify(data)
-    }
-    return fetch(url,options)
+    return axios.post(url, data)
 }
 
 export function updateData(url , data) {
-    const options = {
-        method : "PUT",
-        headers : {
-            "content-type" : "application/json"
-        },
-        body : JSON.stringify(data)
-    }
-    return fetch(url,options)
+    return axios.put(url, data)
 }
